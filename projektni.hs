@@ -45,6 +45,18 @@ vigenereDechiper key s =
     where
         newKey = createKey key s
 
+-- find all keys
+findKey :: [[Char]]
+findKey = [chr x : chr y : chr z : []| x <- [97..122], y <- [97..122], z <- [97..122]]
+
+checkString :: [[Char]]
+checkString = 
+    [vigenereDechiper x word | x <- findKey, isInfixOf "the" (vigenereDechiper x word) ]
+    where
+        commonWords = "the"
+        word = "wzjdacrwarcclwqhcqklqldqkpnxppwtlq"
+
+-- ANSWER: "to map fold or filter that is the question"
 
 
   
